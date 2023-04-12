@@ -14,3 +14,5 @@ Repository: CRAN
 RoxygenNote: 7.2.0
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/smiljanicm/dendrometeR
+BugReports: https://github.com/smiljanicm/dendrometeR/issues
