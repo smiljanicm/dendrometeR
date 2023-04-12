@@ -1,0 +1,16 @@
+Package: dendrometeR
+Type: Package
+Title: Analyzing Dendrometer Data
+Version: 1.1.0
+Date: 2022-10-21
+Author: Olivier Bouriaud, Ernst van der Maaten, Marieke van der Maaten-Theunissen and Marko Smiljanic
+Maintainer: Marko Smiljanic <marko.smiljanic313@gmail.com>
+Description: Various functions to import, verify, process and plot high-resolution dendrometer data using daily and stem-cycle approaches.
+License: GPL (>=2)
+Depends: R (>= 3.2.0), forecast, graphics, grDevices, pspline, stats, zoo
+Imports: methods
+Encoding: UTF-8
+Repository: CRAN
+RoxygenNote: 7.2.0
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
