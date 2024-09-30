@@ -11,7 +11,7 @@ Depends: R (>= 3.2.0), forecast, graphics, grDevices, pspline, stats, zoo
 Imports: methods
 Encoding: UTF-8
 Repository: CRAN
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.2
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/smiljanicm/dendrometeR
