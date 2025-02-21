@@ -34,9 +34,9 @@
 #'            colPhases = c("green", "cyan", "orange"),
 #'            pch = 4, main = "Dendrometer", ylab = "Values")
 #'
-#' \dontrun{
-#'
 #' # specific sensors may be selected as follows:
+#'
+#' \donttest{
 #' data(dmED)
 #' dm.gpf <- fill_gaps(dmED)
 #' dm.phase <- phase_def(dm.gpf)
@@ -53,6 +53,8 @@
 #'
 phase_plot <- function(dm.gpf, dm.phase = phase_def(dm.gpf), sensor = NULL, period = NULL, colPhases = NULL, ...)
 {
+  old_options <- options()
+  on.exit(options(old_options))
   nm1 <- deparse(substitute(dm.gpf))
   nm2 <- deparse(substitute(dm.phase))
 

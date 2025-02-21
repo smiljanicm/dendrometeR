@@ -32,8 +32,7 @@ The function segments environmental parameters according to the stem-cyclic phas
 \code{env.data} should cover at least the same period as the dendrometer data used to define the cyclic phases, and should have the same (or a higher) temporal resolution.
 }
 \examples{
-\dontrun{
-
+\donttest{
 data(dmED)
 dm.gpf <- fill_gaps(dmED)
 dm.phase <- phase_def(dm.gpf)

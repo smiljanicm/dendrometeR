@@ -8,8 +8,8 @@
 #'
 #' @param dm.gpf a \code{data.frame} with either gap-free or gap-filled dendrometer series as produced by \code{\link{fill_gaps}}.
 #' @param resolution a \code{numeric} specifying the resolution of the dendrometer data in seconds. Defaults to the resolution of \code{dm.gpf} as calculated using \code{\link{dendro.resolution}}.
-#' @param shapeSensitivity a \code{numeric} specifying a time window, defined as proportion of a single day. Within this time window possible extrema points (i.e. minimum and maximum) in dendrometer measurements are searched for. Defaults to 0.6 (60\% of a day). See details for further explanation.
-#' @param minmaxDist a \code{numeric} specifying the minimum temporal distance between consecutive minimum and maximum points (i.e. in the x direction). Defaults to 0.2 (20\% of a day).
+#' @param shapeSensitivity a \code{numeric} specifying a time window, defined as proportion of a single day. Within this time window possible extrema points (i.e. minimum and maximum) in dendrometer measurements are searched for. Defaults to 0.6 (60 percent of a day). See details for further explanation.
+#' @param minmaxDist a \code{numeric} specifying the minimum temporal distance between consecutive minimum and maximum points (i.e. in the x direction). Defaults to 0.2 (20 percent of a day).
 #' @param minmaxSD a \code{numeric} specifying the minimum difference between consecutive minimum and maximum points expressed as a number of standard deviations (i.e. in the y direction). Defaults to 2.
 #' @param radialIncrease a \code{character} string of \code{"max", "min", "mid"}, specifying when the stem-radius increment phase should start, with \code{"max"} as the most, and \code{"min"} as the least conservative approach; \code{"mid"} is in between. See details for further explanation.
 #'
@@ -100,7 +100,11 @@ phase_def <- function(dm.gpf, resolution = dendro.resolution(dm.gpf), shapeSensi
 
   ### select minima/maxima points for every day depending on the resolution ###
   extrema <- function(dendro = parent.frame()$dm.gpf, minima = parent.frame()$minima, maxima = parent.frame()$maxima, shapeSensitivity = parent.frame()$shapeSensitivity) {
-    dayLen <- 86400/resolution
+    # print(resolution)
+    # print(class(resolution))
+    # print(is.numeric(resolution))
+#    stopifnot(!is.numeric(resolution),"debugstop")
+    dayLen <- 86400/as.numeric(resolution)
     dayNumb <- round(length(dendro)/dayLen)
     dayShape <- vector()
     minimaNew <- vector()
@@ -154,7 +158,7 @@ phase_def <- function(dm.gpf, resolution = dendro.resolution(dm.gpf), shapeSensi
 
   # offset original series depending on the shapeSensitivity variable and redo the extrema detection
   # TODO: Offset might be too big currently. Needs further testing
-  dayLen <- 86400/resolution
+  dayLen <- 86400/as.numeric(resolution)
   locExtOffset <- local_extrema(dm.gpf[floor(dayLen*shapeSensitivity):length(dm.gpf)])
   extValsOffset <- extrema(dm.gpf[floor(dayLen*shapeSensitivity):length(dm.gpf)], locExtOffset$minima, locExtOffset$maxima)
 
